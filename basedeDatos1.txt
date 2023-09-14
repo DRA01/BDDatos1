@@ -1,0 +1,98 @@
+                                    BASE DE DATOS.
+
+Base de datos - "conjunto de informacion ordenada al que se puede acceder de manera sistematica."
+__________________________________
+|               CAMPOS            |                                   
+|_________________|_______________|
+|                 |               |
+|      EDAD       |    CLIENTE    |
+|_________________|_______________|
+|                 |               |      TABLA                              
+|        20       |     PEPE      |  
+|        19       |     JUAN      |
+|        32       |     SUSANA    |
+|_________________|_______________|        
+
+______________________________________________
+|            |                |              |        
+|  CLIENTE   |    MODELO      |   PATENTE    |
+|____________|________________|______________|
+|            |                |              |
+| PEPE       |  504           |   SJA394     |
+| JUAN       |  Gallardo      |   KSA912     |
+| SUSANA     |  Murcielago    |   DSAD432    |
+|____________|________________|______________|
+
+El dato es la unidad minima de informacion
+informacion es un conjunto de datos en un contexto
+
+R elational
+D ata 
+B ase
+M anagement
+S ystem
+
+                                                     RED
+                                    __________________|_________________________                              
+                                   |                                            |
+                                Cliente                                      Servidor
+                                   |                          __________________|____________________    
+                                 Motor                       |                  |                    |  
+                                   |                        db1                db2                  db3
+                                   |                                
+                                Aplicacion                            
+
+
+• Atr. simples y compuestos
+
+En los ejemplos considerados hasta ahora, los atributos han sido simpless; es decir, no están divididos en subpartes.
+Los atributos compuestos, en cambio, se pueden dividir en subpartes podría estar estructurado
+como un atributo compuesto consistente en nombre, primer-apellido y segundo-apellido
+tambien un atributo compuesto puede aparecer como una jerarquía dirección-cliente, su
+componente calle puede ser a su vez dividido en
+número-calle, nombre-calle y piso.
+
+• Atributos derivados. 
+
+El valor para este tipo de atributo se puede derivar de los valores de otros atributos o entidades relacionados.
+Ej. el conjunto de entidades cliente que tiene un atributo préstamos que representa cuántos préstamos
+tiene un cliente en el banco. Ese atributo se puede
+derivar contando el número de entidades préstamo asociadas con ese cliente.
+Una relación es una asociación entre diferentes entidades.
+
+La correspondencia de cardinalidades, o razón de cardinalidad, expresa el número de entidades a las que otra
+entidad puede estar asociada vía un conjunto de relaciones.
+• Uno a uno. Una entidad en A se asocia con a lo
+sumo una entidad en B, y una entidad en B se asocia con a lo sumo una entidad en A.
+
+• Uno a varios. Una entidad en A se asocia con cualquier número de entidades en B (ninguna o varias).
+Una entidad en B, sin embargo, se puede asociar con
+a lo sumo una entidad en A.
+
+• Varios a uno. Una entidad en A se asocia con a lo
+sumo una entidad en B. Una entidad en B, sin embargo, se puede asociar con cualquier número de entidades 
+
+• Varios a varios. Una entidad en A se asocia con cualquier número de entidades (ninguna o varias) en B, 
+y una entidad en B se asocia con cualquier número de entidades (ninguna o varias) en A.
+
+--------------------------------------------------------------------------------------------------------------------
+
+• (inner) join devuelve registros que tienen valores iguales en ambas tablas
+   SELECT (Campos que queremos comparar) FROM (tabla a la izquierda) inner join (tabla a la derecha) 
+   on (llave principal de la tabla 1) = (llave de la tabla 2);
+
+
+• Left (outer) join devuelve todos los registros de la tabla izquierda y los registros que coincidan con los de 
+la tabla derecha.
+   SELECT (Campos que queremos comparar) FROM (tabla a la izquierda) Left join (tabla a la derecha) 
+   on (llave principal de la tabla 1) = (llave de la tabla 2);
+
+• Right (outer) join devuelve los registros de la tabla derecha y los registros que coincidan con los 
+de la tabla izquierda.
+   SELECT (Campos que queremos comparar) FROM (tabla a la izquierda) Right join (tabla a la derecha) 
+   on (llave principal de la tabla 1) = (llave de la tabla 2);
+
+• Full (outer) join devuelve los registros cuando haya una relacion ya sea en la tabla izquierda o derecha.
+   SELECT (Campos que queremos comparar) FROM (tabla a la izquierda) Full join (tabla a la derecha) 
+   on (llave principal de la tabla 1) = (llave de la tabla 2);
+
