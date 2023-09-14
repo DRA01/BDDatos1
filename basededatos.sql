@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS clientes
     PRIMARY KEY (id_clientes),
     FOREIGN KEY (id_personas) REFERENCES personas (id_personas));
 
-CREATE TABLE 'detalle'
+CREATE TABLE detalles
 (id_productos int NOT NULL auto_increment,
 id_producto int,
 id_factura)
@@ -67,6 +67,12 @@ INSERT INTO facturas (cod_factura)
         UPDATE facturas SET cod_factura = 'fEmp08'WHERE id_Factura = 8;
         UPDATE facturas SET cod_factura = 'fEmp09'WHERE id_Factura = 9;
 
+INSERT INTO productos (codigo, nombre, descripcion, precio) 
+    VALUES
+        ('abl001', 'mouse', 'Mouse generico para Pc', '1500'),
+        ('abl002', 'teclado', 'Teclado mecanico TKL con switches outemu blue', '5000'),
+        ('abl003', 'parlante', 'Parlante Logitech 8000wts de potencia surround', '3500')
+        ;
 
 
 
@@ -77,10 +83,12 @@ INSERT INTO facturas (cod_factura)
     );*/
 
 /*INNER JOIN de tabla clientes y personas.*/
-SELECT clientes.tarjeta, personas.ApyN, clientes.credito FROM clientes inner join personas on clientes.id_personas = personas.id_personas;
+SELECT clientes.tarjeta, personas.ApyN, clientes.credito FROM clientes inner join personas
+on clientes.id_personas = personas.id_personas;
 
 /*INNER JOIN de tabla facturas y clientes.*/
-SELECT facturas.cod_factura, facturas.total, clientes.tarjeta FROM facturas inner join clientes on facturas.id_clientes = clientes.id_clientes;
+SELECT facturas.cod_factura, facturas.total, clientes.tarjeta FROM facturas inner join clientes
+on facturas.id_clientes = clientes.id_clientes;
 
 
 
