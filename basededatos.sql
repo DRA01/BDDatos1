@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS clientes
     FOREIGN KEY (id_personas) REFERENCES personas (id_personas));
 
 CREATE TABLE detalles
-(id_productos int NOT NULL auto_increment,
-id_producto int,
-id_factura)
+    (id_productos int NOT NULL auto_increment,
+    id_producto int,
+    id_factura)
 
 CREATE TABLE facturas 
     (id_Factura int NOT NULL auto_increment,
@@ -117,3 +117,80 @@ INSERT INTO personas (ApyN, email, telefono, dni)
 (crear la relacion / llave primaria)//
 // ALTER TABLE nombre.tabla ADD CONSTRAINT nombre_campo FOREIGN KEY (nombre_campo);
 (llave secundaria)*/
+
+
+/*19-9-23
+ ELIMINAMOS TODAS LAS BDD QUE AGREGAMOS ANTERIORMENTE
+*/
+DROP DATABASE clase_prueba
+DROP DATABASE empresa
+DROP DATABASE sqljava
+DROP DATABASE clientes
+DROP DATABASE test
+
+/* CREAMOS UN USUARIO PARA LA BDD */
+
+CREATE USER 'clases'@'localhost' IDENTIFIED BY '123456';
+
+CREATE TABLE `prueba1`.`escuela` 
+    (`nombre` VARCHAR(20) NOT NULL , `edad` INT(10) NOT NULL ,
+    `dni` VARCHAR(10) NOT NULL , `telefono` VARCHAR(10) NOT NULL );
+
+
+    /*Creamos el User "tinelli" de prueba para darle permisos y agregar registros */
+
+CREATE USER 'tinelli'@'localhost' IDENTIFIED BY 'Admin123456';
+CREATE DATABASE db_tinelli;
+GRANT ALL PRIVILEGES ON db_tinelli.* TO 'tinelli'@'localhost';
+
+CREATE TABLE IF NOT EXISTS tb_hq 
+    (id_hq int NOT NULL auto_increment,
+    nom varchar(20),
+    dni int,
+    email varchar(30),
+    PRIMARY KEY (id_hq));
+
+CREATE TABLE IF NOT EXISTS tb_estudio1
+    (id_estudio1 int NOT NULL auto_increment,
+    categoria varchar(20),
+    sueldo int,
+    id_hq INT,
+    PRIMARY KEY (id_estudio1),
+    FOREIGN KEY (id_hq) REFERENCES tb_hq (id_hq) ON DELETE CASCADE);
+
+CREATE TABLE IF NOT EXISTS tb_estudio2
+    (id_estudio2 int NOT NULL auto_increment,
+    categoria varchar (20),
+    sueldo int,
+    id_hq int,
+    PRIMARY KEY (id_estudio2),
+    FOREIGN KEY (id_hq) REFERENCES tb_hq (id_hq) ON DELETE CASCADE);
+
+INSERT INTO tb_hq (nom, dni, email)
+    VALUES
+        ('Marcelo Tinelli','41511', 'ads@gmail.com'),
+        ('Pepe Argento','41056', 'LKD@gmail.com'),
+        ('Juan Roman Riquelme','94100', 'JRM10@gmail.com'),
+        ('Calos Saul Menem','30145', 'Carlitos@gmail.com'),
+        ('Ricardo Fort','14840', 'Fort@gmail.com'),
+        ('Susana Gimenez','79821','SSG@gmail.com'),
+        ('Pablo Escobar','44810','PEG@gmail.com'),
+        ('Liliana Calabro','12014','Calabro@gmail.com'),
+        ('Alacran','54789','Alacran@gmail.com'),
+        ('Boby Goma','54101','Boby@gmail.com');
+
+INSERT INTO tb_estudio1 (id_hq, categoria, sueldo)
+    VALUES
+        (2, 'reidor', 200),
+        (4, 'esclavo', 250),
+        (6, 'bailarin', 450),
+        (8, 'reidor', 270),
+        (10, 'esclavo', 150);
+
+INSERT INTO tb_estudio2 (id_hq, categoria, sueldo)
+    VALUES
+        (1, 'bailarin', 480),
+        (3, 'reidor', 280),
+        (5, 'esclavo', 160),
+        (7, 'bailarin', 460),
+        (9, 'reidor', 240);
