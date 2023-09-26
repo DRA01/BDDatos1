@@ -91,7 +91,6 @@ SELECT facturas.cod_factura, facturas.total, clientes.tarjeta FROM facturas inne
 on facturas.id_clientes = clientes.id_clientes;
 
 
-
 /*ALTER TABLE clientes ADD CONSTRAINT id_clientes PRIMARY KEY (id_clientes);
 ALTER TABLE personas ADD CONSTRAINT dni PRIMARY KEY (dni);
 ALTER TABLE empleados ADD CONSTRAINT id_empleado PRIMARY KEY (id_empleado);
@@ -194,3 +193,39 @@ INSERT INTO tb_estudio2 (id_hq, categoria, sueldo)
         (5, 'esclavo', 160),
         (7, 'bailarin', 460),
         (9, 'reidor', 240);
+
+/* 26-09-23 */
+
+SELECT id_hq FROM tb_hq;
+SELECT * FROM tb_estudio1;
+
+INSERT INTO tb_hq (nom, dni, email)
+    VALUES
+        ('Fernando De La Rua', '78521', 'DeLaRua@gmail.com');
+
+INSERT INTO tb_estudio2 (id_hq, categoria, sueldo)
+    VALUES
+        (11, 'Invitado', 10);
+
+/* Dominios generales para todos 
+
+Base de Datos: db_(nombre)
+Tabla: tb_(nombre)
+Identificador: id_(nombre) */
+
+/* Inner join para sacar el sueldo de "De La Rua" */
+/*
+¿que quiero seleccionar?  ¿de donde? donde quiero relacionar    donde esta la relacion          condicion que pusimos para que devuelva el sueldo de De La Rua
+|-----------------------||----------||---------------------|----------------------------------||-----------------------|*/
+SELECT tb_estudio2.sueldo FROM tb_hq inner join tb_estudio2 on tb_hq.id_hq = tb_estudio2.id_hq WHERE tb_hq.id_hq = 11;
+
+SELECT tb_estudio2.sueldo tb_estudio1.sueldo FROM tb_hq inner join tb_estudio2 on tb_hq.id_hq = tb_estudio2.id_hq
+inner join tb_estudio1 on tb_hq.id_hq = tb_estudio1.id_hq WHERE tb_estudio2.sueldo > 100 AND tb_estudio1.sueldo > 100;
+
+SELECT * FROM tb_hq WHERE id_hq > 5 AND id_hq < 8;
+
+CREATE DATABASE db_videoclub
+CREATE TABLE IF NOT EXISTS tb_pelis
+
+INSERT INTO tb_pelis (codigo int, nom varchar(20), genero varchar(20), years int,
+    director varchar(20), estudio varchar(20), duracion time, clasificacion varchar(20))
