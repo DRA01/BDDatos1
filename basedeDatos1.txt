@@ -111,11 +111,18 @@ FORMAL NORMAL1: decimo que una tabla esta en forma normal 1 si se cumplen las si
 -	Los campos no clave deben identificarse por la clave es decir, que los campos no clave dependen funcionalmente de la clave 
 -	Debe existir una independencia tanto en el orden de la fila como de las columnas es decir, si los datos cambian de orden no deben cambiar su significado
 
-FORMAL NORMAL 2: la segunda formal normal, una tabla esta en formal normal 2, si primero se encuentra en primera formal normal y luego se cumpla que los atributos no claves dependan de toda la clave principal.
-Por ejemplo, si tenemos una tabla con personas ubicadas por su DNI y obtenemos su empresa y dirección de trabajo, la clave en este caso seria DNI_empresa.
-Pero nos encontramos con que una misma persona puede trabajar en varias empresas y vemos que la dirección de trabajo no depende de toda la clave primaria, sino solo de empresa, por lo tanto, no estamos en SEGUNDA FORMA NORMAL.
+FORMAL NORMAL 2: la segunda formal normal, una tabla esta en formal normal 2, si primero se encuentra
+en primera formal normal y luego se cumpla que los atributos no claves dependan de toda la clave principal.
+Por ejemplo, si tenemos una tabla con personas ubicadas por su DNI y obtenemos su empresa y dirección de trabajo,
+la clave en este caso seria DNI_empresa.
+Pero nos encontramos con que una misma persona puede trabajar en varias empresas y vemos que la dirección
+de trabajo no depende de toda la clave primaria, sino solo de empresa, por lo tanto, no estamos en SEGUNDA FORMA NORMAL.
 
-FORMAL NORMAL 3: decimos que una tabla esta en tercera forma normal, si además de estar en segunda FN, no existe ninguna dependencia transitiva entre los atributos que no son claves.
-Ejemplo, tenemos una tabla de ganadores de torneo de tenis. En ella figura el nombre del torneo, el año, el nombre del ganador, y su nacionalidad, la clave seria “torneo_anio”.
-Ahora, esta tabla no esta en FN3 porque el atributo nacionalidad, que no es de la clave, depende del torneo del ganador (también depende de la clave). Digamos que nacionalidad aporta información sobre el ganador, pero no sobre su clave.
+FORMAL NORMAL 3: decimos que una tabla esta en tercera forma normal, si además de estar en segunda FN,
+no existe ninguna dependencia transitiva entre los atributos que no son claves.
+Ejemplo, tenemos una tabla de ganadores de torneo de tenis. En ella figura el nombre del torneo,
+el año, el nombre del ganador, y su nacionalidad, la clave seria “torneo_anio”.
+Ahora, esta tabla no esta en FN3 porque el atributo nacionalidad, que no es de la clave,
+depende del torneo del ganador (también depende de la clave). Digamos que nacionalidad aporta información
+sobre el ganador, pero no sobre su clave.
 Es una dependencia transitiva porq nacionalidad depende de ganador que a su vez depende de torneo.
