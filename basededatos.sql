@@ -224,8 +224,64 @@ inner join tb_estudio1 on tb_hq.id_hq = tb_estudio1.id_hq WHERE tb_estudio2.suel
 
 SELECT * FROM tb_hq WHERE id_hq > 5 AND id_hq < 8;
 
-CREATE DATABASE db_videoclub
-CREATE TABLE IF NOT EXISTS tb_pelis
+                                        /* 28-09-23 */
 
-INSERT INTO tb_pelis (codigo int, nom varchar(20), genero varchar(20), years int,
-    director varchar(20), estudio varchar(20), duracion time, clasificacion varchar(20))
+
+/* Cramos la base de datos para poder normalizarla mientras le vamos dando los datos correspondientes */                                        
+
+CREATE DATABASE videoclub;
+USE videoclub;
+CREATE TABLE IF NOT EXISTS pelis
+    (nombre varchar(50),
+    anio int (4),
+    duracion time, 
+    estudio varchar(10),
+    clasificacion varchar(4),
+    codigo varchar(4));
+
+INSERT INTO pelis (nombre, anio, duracion, estudio, clasificacion, codigo)
+    VALUES
+        ('Harry Potter', 2001, '2H', 'Warner Bros', 'PG', 'P001'),
+        ('Terminator', 1984, '1H', 'Warner Bros', 'PG13', 'P002'),
+        ('El senior de los anillos', 2001, '5H', 'Warner Bros', 'PG15', 'P003');
+
+CREATE TABLE IF NOT EXISTS generos
+    (tipo varchar (10),
+    cod_genero varchar(4),
+    codigo varchar(4)
+    );
+
+INSERT INTO generos (tipo, cod_genero, codigo)
+    VALUES
+        ('Fantasia', 'G001','P001'),
+        ('Accion', 'G002', 'P002'),
+        ('Fantasia', 'G003', 'P003');
+
+CREATE TABLE IF NOT EXISTS pelis_generos
+    (cod_genero varchar(4),
+    codigo varchar(4));
+
+
+
+CREATE TABLE IF NOT EXISTS directores
+    (nombre varchar(40),
+    cod_director varchar(4),
+    nacionalidad varchar(20));
+
+CREATE TABLE IF NOT EXISTS pelis_director
+    (cod_director varchar(4),
+    codigo varchar(4));
+
+
+/*-----------------------------------------------------------------------------------*/
+
+CREATE DATABASE verduleria;
+USE verduleria;
+
+CREATE DATABASE IF NOT EXISTS productos
+    (nombre, 
+    precio_x_kg,
+    precio_x_caja,
+    cod_producto);
+
+
