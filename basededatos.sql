@@ -284,4 +284,82 @@ CREATE DATABASE IF NOT EXISTS productos
     precio_x_caja,
     cod_producto);
 
+CREATE TABLE sede
+    (code_sede,
+    nombre,
+    direccion);
+
+CREATE TABLE curso 
+    (code_curso,
+    tipo,
+    nombre);
+
+CREATE TABLE sede_curso
+    (code_sede,
+    code_curso);
+
+CREATE TABLE dias
+
+
+
+CREATE TABLE horarios
+    (code_horarios,
+    dia,
+    )
+
+/* 10-10-23 */
+
+CREATE DATABASE bd_negocio;
+USE bd_negocio;
+
+CREATE TABLE IF NOT EXISTS tb_articulos
+    (cod_articulo varchar(6) NOT NULL, 
+    nombre varchar(20),
+    marca varchar(20),
+    precio int,
+    CONSTRAINT pk_articulos PRIMARY KEY (cod_articulo));
+
+CREATE TABLE IF NOT EXISTS tb_proveedores
+    (proveedor varchar(20),
+    tel_prov int,
+    cuit_prov int,
+    CONSTRAINT pk_proveedores PRIMARY KEY (cuit_prov));
+
+
+CREATE TABLE IF NOT EXISTS tb_art_prov
+    (cod_articulo varchar(6) NOT NULL,
+    cuit_prov int,
+    CONSTRAINT pk_artprov PRIMARY KEY (cod_articulo , cuit_prov),
+    FOREIGN KEY (cod_articulo) REFERENCES tb_articulos (cod_articulo),
+    FOREIGN KEY (cuit_prov) REFERENCES tb_proveedores (cuit_prov));
+
+/*---------------------------------------------------------------------------------*/
+
+CREATE DATABASE IF NOT EXISTS db_hospital
+USE db_hospital
+
+CREATE TABLE IF NOT EXISTS tb_doctores
+    (matricula varchar(10) NOT NULL,
+    nombre varchar(15),
+    apellidos varchar(20),
+    especialidad varchar(40),
+    CONSTRAINT pk_doctores PRIMARY KEY (matricula));
+
+CREATE TABLE IF NOT EXISTS tb_pacientes
+    (dni int(10) NOT NULL,
+    nombre varchar(20),
+    apellidos varchar(20),
+    telefono int,
+    CONSTRAINT pk_pacientes PRIMARY KEY (dni));
+
+CREATE TABLE IF NO EXISTS tb_turnos
+    (dni int(10) NOT NULL,
+    matricula varchar(10) NOT NULL,
+    fecha DATE.
+    hora TIME,
+    CONSTRAINT pk_turnos PRIMARY KEY (dni, matricula),
+    FOREIGN KEY (matricula) REFERENCES tb_doctores (matricula)
+    FOREIGN KEY (dni) REFERENCES tb_pacientes (dni));
+
+/*------------------------------------------------------------------------*/
 
