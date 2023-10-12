@@ -363,3 +363,44 @@ CREATE TABLE IF NO EXISTS tb_turnos
 
 /*------------------------------------------------------------------------*/
 
+/* 12-10-23 */
+
+
+CREATE DATABASE IF NOT EXISTS db_peluqueria;
+USE db_estetica;
+
+CREATE  TABLE IF NOT EXISTS tb_clientes
+    (dni int NOT NULL,
+    telefono INT,
+    nombre VARCHAR(20),
+    CONSTRAINT pk_clientes PRIMARY KEY (dni));
+
+CREATE TABLE IF NOT EXISTS tb_mascotas
+    (id_mascota varchar(6) NOT NULL,
+    dni INT NOT NULL,
+    nombre varchar(20),
+    edad int,
+    peso int,
+    CONSTRAINT pk_mascotas PRIMARY KEY (id_mascota),
+    FOREIGN KEY (dni) REFERENCES tb_clientes (dni));
+
+
+CREATE TABLE IF NOT EXISTS tb_animales
+    (id_animal varchar(6) NOT NULL,
+    raza varchar(20),
+    id_mascota VARCHAR(6) NOT NULL,
+    CONSTRAINT pk_animales PRIMARY KEY (id_animal),
+    FOREIGN KEY (id_mascota) REFERENCES tb_mascotas (id_mascota));
+
+CREATE TABLE IF NOT EXISTS tb_turnos
+    (id_turno
+    id_mascota VARCHAR(6) NOT NULL,
+    hora TIME,
+    precio int,
+    CONSTRAINT pk_turnos PRIMARY KEY (id_mascota),
+    FOREIGN KEY (id_mascota) REFERENCES tb_mascotas (id_mascota));
+
+
+CREATE DATABASE IF NOT EXISTS db_transcacho;
+USE db_transcacho;
+
