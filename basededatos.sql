@@ -404,3 +404,37 @@ CREATE TABLE IF NOT EXISTS tb_turnos
 CREATE DATABASE IF NOT EXISTS db_transcacho;
 USE db_transcacho;
 
+
+
+DELIMITER $$
+
+CREATE PROCEDURE CrearCuenta(
+    nom VARCHAR(40),
+    ape VARCHAR(40),
+    telefono varchar(20),
+    descr varchar(40)
+)
+BEGIN 
+    DECLARE ultimo_id INT DEFAULT 0;
+    START TRANSACTION;
+    -- Inserta datos en la cuenta
+    INSERT INTO tb_cuentas (nombre, apellido)
+        VALUES
+            (nom, ape);
+    SET ultimo_id = LAST_INSERT_ID();
+    IF ultimo_id > 0 THEN 
+        INSERT INTO tb_telefonos (id_cuentas, telefono, descripcion)
+            VALUES
+                (ultimo_id, telefono, descr);
+        COMMIT;
+    ELSE 
+        ROLLBACK;
+    END IF;
+END$$
+
+DELIMITER;
+
+/* 26-10-23 */
+
+
+
